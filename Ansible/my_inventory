@@ -1,0 +1,11 @@
+[Dev]
+dev-server1.assignment12.com
+dev-server2.assignment12.com
+
+[QA]
+qa-server1.example.com
+qa-server2.assignment12.com
+
+[Prod]
+prod-server1.assingment12.com
+prod-server2.assignment12.com

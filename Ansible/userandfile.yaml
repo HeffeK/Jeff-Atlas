@@ -1,0 +1,16 @@
+---
+- name: Create a new user and a file in their home directory
+  hosts: all
+  become: yes  # Use sudo to create the user
+  tasks:
+    - name: Create user James
+      user:
+        name: James
+        state: present
+        shell: /bin/bash
+
+    - name: Create jamesfile in James's home directory
+      file:
+        path: /home/James/jamesfile
+        state: touch
+        mode: '0644'  # Optional: Set file permissions

@@ -1,0 +1,17 @@
+---
+- name: Create dev user and update permissions for dev-report file
+  hosts: Dev
+  become: yes  # Use sudo to run tasks with escalated privileges
+  tasks:
+    - name: Create dev user and group
+      user:
+        name: dev
+        state: present
+        shell: /bin/bash  # Optional: Set default shell
+
+    - name: Update permissions for dev-report file
+      file:
+        path: /tmp/dev-report
+        mode: '0644'  # Set file permissions to 644
+        owner: dev     # Change owner to dev
+        group: dev     # Change group to dev

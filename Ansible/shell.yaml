@@ -1,0 +1,10 @@
+---
+- name: use the shell
+  hosts: sweats
+  become: yes
+
+  tasks:
+    - name: run a command
+      shell:
+        cmd: touch shell2.txt
+        chdir: /tmp

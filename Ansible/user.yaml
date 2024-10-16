@@ -1,0 +1,14 @@
+---
+- name: create users
+  hosts: sweats
+  become: yes
+
+  tasks:
+    - name: create user James
+      user:
+        name: james
+        comment: homework user
+        shell: /bin/bash
+        home: /home/james
+        groups: wheel
+        append: yes

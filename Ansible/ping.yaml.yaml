@@ -1,0 +1,8 @@
+---
+- name: ping hosts
+  hosts: sweats
+  
+  tasks:
+  - name: ping our hosts
+    ping:
+      

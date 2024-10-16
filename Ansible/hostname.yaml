@@ -1,0 +1,9 @@
+---
+- name: manage hostname
+  hosts: sweats
+  become: yes
+
+  tasks:
+    - name: update hostname
+      hostname:
+        name: AnsibleClient

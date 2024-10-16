@@ -1,0 +1,28 @@
+---
+- name: Set up an HTTP web page
+  hosts: all
+  become: yes  # Use sudo to run tasks with escalated privileges
+  tasks:
+    - name: Install Apache web server
+      yum:  # Use 'apt' instead if you're on a Debian-based system
+        name: httpd
+        state: present
+
+    - name: Start and enable Apache service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: Create an HTML file for the web page
+      copy:
+        dest: /var/www/html/index.html
+        content: "I created this with Ansible"
+        mode: '0644'  # Set permissions for the HTML file
+
+    - name: Ensure firewall allows HTTP traffic (optional)
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+      when: ansible_os_family == "RedHat"  # Change based on your OS

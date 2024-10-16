@@ -1,0 +1,16 @@
+---
+- name: manage services
+  hosts: sweats
+  become: yes
+
+  tasks:
+    - name: start firewalld
+      service:
+        name: firewalld
+        state: started
+        
+    - name: start and enable httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes

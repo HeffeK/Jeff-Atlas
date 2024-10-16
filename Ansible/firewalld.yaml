@@ -1,0 +1,17 @@
+---
+- name: manage firewall
+  hosts: sweats
+  become: yes
+
+  tasks:
+    - name: add http service
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+
+    - name: add http port
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled

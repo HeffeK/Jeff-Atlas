@@ -1,0 +1,14 @@
+---
+- name: write text into files
+  hosts: sweats
+  become: yes
+
+  tasks: 
+    - name: populate helloworld.txt
+      lineinfile:
+        path: /tmp/helloworld.txt
+        create: yes
+        owner: ec2-user
+        group: ec2-user
+        mode: '0644'
+        line: hello world
